@@ -5,8 +5,7 @@ import {
 } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy } from 'passport-local';
-import { AuthService } from '../services/auth.service';
-import { UserNotPassword } from 'src/common/interfaces/register.interfaces';
+import { AuthService } from '../auth.service';
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
@@ -14,14 +13,13 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     super({ usernameField: 'email' });
   }
 
-  async validate(
-    email: string,
-    password: string,
-  ): Promise<UserNotPassword | NotFoundException> {
+  async validate(email: string, password: string): Promise<any> {
     const user = await this.authService.validateUser(email, password);
-    if (!user) {
-      throw new UnauthorizedException();
-    }
-    return user;
+    if (!user) throw new UnauthorizedException();
+    return {
+      id: user._id,
+      username: user.username,
+      role: user.role,
+    };
   }
 }

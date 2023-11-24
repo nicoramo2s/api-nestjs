@@ -11,18 +11,22 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { Response } from 'express';
+import { Roles } from 'src/auth/decorators/roles.decorator';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { CreateUserDTO } from '../dto/user.dto';
-import { UsersService } from '../services/users.service';
+import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { ROLES } from 'src/common/enums/role.enum';
+import { CreateUserDTO } from './dto/user.dto';
+import { UsersService } from './users.service';
 
-@UseGuards(JwtAuthGuard)
+@Roles(ROLES.ADMIN)
+@UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('users')
 export class UsersController {
-  constructor(private readonly userServices: UsersService) {}
+  constructor(private readonly usersServices: UsersService) {}
 
   @Get()
   async getAllUsers(@Res() res: Response) {
-    const users = await this.userServices.findAll();
+    const users = await this.usersServices.findAll();
     if (!users) throw new NotFoundException('bad request');
     // Crear un nuevo arreglo sin la propiedad 'password'
     const usersNotPassword = users.map((objeto) => {
@@ -34,7 +38,7 @@ export class UsersController {
 
   @Get(':id')
   async getUserById(@Param('id') id: string, @Res() res: Response) {
-    const user = await this.userServices.findById(id);
+    const user = await this.usersServices.findById(id);
     if (!user) throw new NotFoundException('bad request');
     return res.status(HttpStatus.OK).json({
       username: user.username,
@@ -48,7 +52,7 @@ export class UsersController {
     @Body() body: CreateUserDTO,
     @Res() res: Response,
   ) {
-    const user = await this.userServices.updateUser(id, body);
+    const user = await this.usersServices.updateUser(id, body);
     if (!user) throw new NotFoundException('bad update');
     return res.status(HttpStatus.OK).json({
       message: 'user updated successfully',
@@ -62,7 +66,7 @@ export class UsersController {
 
   @Delete(':id')
   async deleteUser(@Param('id') id: string, @Res() res: Response) {
-    const user = await this.userServices.deleteUserById(id);
+    const user = await this.usersServices.deleteUserById(id);
     if (!user) throw new NotFoundException('bad delete');
     return res.status(HttpStatus.OK).json({
       message: 'user removed successfully',

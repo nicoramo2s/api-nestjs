@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-import { UserNotPassword } from 'src/common/interfaces/register.interfaces';
+import { UserPayload } from 'src/common/interfaces/passport.interface';
 import { CreateUserDTO } from 'src/users/dto/user.dto';
 import { UsersService } from 'src/users/services/users.service';
 
@@ -16,22 +16,19 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async validateUser(
-    email: string,
-    password: string,
-  ): Promise<UserNotPassword | NotFoundException> {
-    const user = await this.userService.findByEmail(email);
-    if (user && user.password === password) {
-      const { password, ...userDontPassword } = user;
-      return userDontPassword;
-    }
-    return new NotFoundException();
+  async validateUser(email: string, password: string): Promise<any> {
+    const userFounded = await this.userService.findByEmail(email);
+    if (!userFounded) throw new NotFoundException();
+    const isMatch = bcrypt.compare(password, userFounded.password);
+    if (!isMatch) throw new NotFoundException('Email or password incorrects');
+    return userFounded;
   }
 
-  login(user: any) {
+  login(user: UserPayload) {
     const payload = {
-      email: user.email,
+      id: user.id,
       username: user.username,
+      role: user.role,
     };
 
     return {
@@ -39,9 +36,7 @@ export class AuthService {
     };
   }
 
-  async register(
-    createUserDto: CreateUserDTO,
-  ): Promise<UserNotPassword | Error> {
+  async register(createUserDto: CreateUserDTO): Promise<any> {
     const user = await this.userService.findByEmail(createUserDto.email);
     if (user) throw new BadRequestException('the user exist');
 

@@ -1,1 +1,3 @@
-export enum CATEGORY {}
+export enum CATEGORY {
+  COMUN = 'comun',
+}

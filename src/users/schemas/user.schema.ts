@@ -16,9 +16,6 @@ export class User {
   @Prop({ type: String, required: true })
   password: string;
 
-  @Prop({ type: [{ type: Types.ObjectId, ref: 'Post' }] })
-  posts: Post[];
-
   @Prop({ type: String, enum: ROLES, required: true, default: ROLES.USER })
   role: ROLES;
 }

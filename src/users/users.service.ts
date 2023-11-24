@@ -1,9 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CreateUserDTO } from '../dto/user.dto';
-import { User } from '../schemas/user.schema';
-import bcrypt from 'bcrypt';
+import { CreateUserDTO } from './dto/user.dto';
+import { User } from './schemas/user.schema';
 
 @Injectable()
 export class UsersService {
@@ -12,7 +11,7 @@ export class UsersService {
   ) {}
 
   findAll(): Promise<User[]> {
-    const users = this.userModel.find().lean();
+    const users = this.userModel.find().select('-password').lean().exec();
     if (!users) throw new NotFoundException('It was not possible to search');
     return users;
   }
@@ -23,13 +22,13 @@ export class UsersService {
   }
 
   findById(id: string): Promise<User> {
-    const user = this.userModel.findById(id).lean();
+    const user = this.userModel.findById(id).select('-password').lean().exec();
     if (!user) throw new NotFoundException('I dont know in');
     return user;
   }
 
   deleteUserById(id: string): Promise<User> {
-    const userDelete = this.userModel.findByIdAndRemove(id).lean();
+    const userDelete = this.userModel.findByIdAndDelete(id);
     if (!userDelete) throw new NotFoundException('could not be deleted');
     return userDelete;
   }
@@ -37,13 +36,13 @@ export class UsersService {
   updateUser(id: string, body: CreateUserDTO): Promise<User> {
     const userUpdate = this.userModel.findByIdAndUpdate(id, body, {
       new: true,
-    });
+    }).lean();
     if (!userUpdate) throw new NotFoundException('could not be updated');
     return userUpdate;
   }
 
-  findByEmail(email: string): Promise<User> {
-    const user = this.userModel.findOne({ email }).lean();
+  async findByEmail(email: string) {
+    const user = await this.userModel.findOne({ email });
     return user;
   }
 }
