@@ -18,24 +18,21 @@ import { ROLES } from 'src/common/enums/role.enum';
 import { CreateUserDTO } from './dto/user.dto';
 import { UsersService } from './users.service';
 
-@Roles(ROLES.ADMIN)
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersServices: UsersService) {}
 
+  @Roles(ROLES.ADMIN)
   @Get()
   async getAllUsers(@Res() res: Response) {
     const users = await this.usersServices.findAll();
     if (!users) throw new NotFoundException('bad request');
-    // Crear un nuevo arreglo sin la propiedad 'password'
-    const usersNotPassword = users.map((objeto) => {
-      const { password, ...usersSinPassword } = objeto;
-      return usersSinPassword;
-    });
-    return res.status(HttpStatus.OK).json(usersNotPassword);
+
+    return res.status(HttpStatus.OK).json(users);
   }
 
+  @Roles(ROLES.USER)
   @Get(':id')
   async getUserById(@Param('id') id: string, @Res() res: Response) {
     const user = await this.usersServices.findById(id);
@@ -46,6 +43,7 @@ export class UsersController {
     });
   }
 
+  @Roles(ROLES.USER, ROLES.ADMIN)
   @Put(':id')
   async updateUser(
     @Param('id') id: string,
@@ -64,6 +62,7 @@ export class UsersController {
     });
   }
 
+  @Roles(ROLES.ADMIN)
   @Delete(':id')
   async deleteUser(@Param('id') id: string, @Res() res: Response) {
     const user = await this.usersServices.deleteUserById(id);

@@ -11,7 +11,7 @@ export class UsersService {
   ) {}
 
   findAll(): Promise<User[]> {
-    const users = this.userModel.find().select('-password').lean().exec();
+    const users = this.userModel.find().select('-password').lean();
     if (!users) throw new NotFoundException('It was not possible to search');
     return users;
   }
@@ -21,8 +21,8 @@ export class UsersService {
     return newUser.save();
   }
 
-  findById(id: string): Promise<User> {
-    const user = this.userModel.findById(id).select('-password').lean().exec();
+  async findById(id: string): Promise<User> {
+    const user = await this.userModel.findById(id).select('-password').exec();
     if (!user) throw new NotFoundException('I dont know in');
     return user;
   }
@@ -34,9 +34,11 @@ export class UsersService {
   }
 
   updateUser(id: string, body: CreateUserDTO): Promise<User> {
-    const userUpdate = this.userModel.findByIdAndUpdate(id, body, {
-      new: true,
-    }).lean();
+    const userUpdate = this.userModel
+      .findByIdAndUpdate(id, body, {
+        new: true,
+      })
+      .lean();
     if (!userUpdate) throw new NotFoundException('could not be updated');
     return userUpdate;
   }

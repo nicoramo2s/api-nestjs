@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
-import { CATEGORY } from 'src/common/enums/category.enum';
+import mongoose, { HydratedDocument } from 'mongoose';
 import { User } from 'src/users/schemas/user.schema';
 
 export type PostDocument = HydratedDocument<Post>;
@@ -16,10 +15,10 @@ export class Post {
   @Prop({ type: String })
   content: string;
 
-  @Prop({ enum: CATEGORY, required: true, default: CATEGORY.COMUN })
-  category: CATEGORY;
+  @Prop({ type: [String], required: true })
+  category: string[];
 
-  @Prop({ type: 'ObjectId', ref: 'User', required: true })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true })
   userId: User;
 }
 

@@ -1,5 +1,4 @@
-import { IsEnum, IsNotEmpty, IsString, MinLength } from 'class-validator';
-import { CATEGORY } from 'src/common/enums/category.enum';
+import { IsNotEmpty, IsOptional, IsString, MinLength } from 'class-validator';
 
 export class CreatePostDTO {
   @IsString()
@@ -7,15 +6,16 @@ export class CreatePostDTO {
   @MinLength(4)
   title: string;
 
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
-  author: string;
+  author?: string;
 
   @IsNotEmpty()
   @IsString()
   content: string;
 
   @IsNotEmpty()
-  @IsEnum(CATEGORY)
-  category: CATEGORY;
+  @IsString()
+  category: string;
 }

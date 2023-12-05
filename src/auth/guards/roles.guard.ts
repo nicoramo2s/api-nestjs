@@ -7,7 +7,6 @@ import { ROLE_KEY } from '../decorators/roles.decorator';
 export class RolesGuard implements CanActivate {
   constructor(private readonly reflector: Reflector) {}
   canActivate(context: ExecutionContext): boolean {
-    console.log('funciona');
     const roles = this.reflector.getAllAndOverride<ROLES[]>(ROLE_KEY, [
       context.getHandler(),
       context.getClass(),
