@@ -24,7 +24,7 @@ import { SearchPostsDto } from './dto/search-post.dto';
 import { UpdatePostDTO } from './dto/update-post.dto';
 import { PostsService } from './posts.service';
 
-@Roles(ROLES.USER, ROLES.ADMIN)
+@Roles(ROLES.USER)
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('posts')
 export class PostsController {
@@ -118,7 +118,7 @@ export class PostsController {
       throw error;
     }
   }
-
+  @Roles(ROLES.ADMIN)
   @Put(':id')
   async updatePost(
     @Param('id') id: string,
@@ -141,6 +141,7 @@ export class PostsController {
     }
   }
 
+  @Roles(ROLES.ADMIN)
   @Delete(':id')
   async deleteUser(
     @Req() req: PostRequest,
