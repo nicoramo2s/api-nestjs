@@ -19,7 +19,7 @@ export class AuthService {
   async validateUser(email: string, password: string): Promise<any> {
     const userFounded = await this.userService.findByEmail(email);
     if (!userFounded) throw new NotFoundException();
-    const isMatch = bcrypt.compare(password, userFounded.password);
+    const isMatch = await bcrypt.compare(password, userFounded.password);
     if (!isMatch) throw new NotFoundException('Email or password incorrects');
     return userFounded;
   }
@@ -32,7 +32,9 @@ export class AuthService {
     };
 
     return {
-      access_token: this.jwtService.sign(payload), //* el metodo sign firma con el jwt
+      access_token: this.jwtService.sign(payload, {
+        secret: process.env.JWT_SECRET_KEY,
+      }), //* el metodo sign firma con el jwt
     };
   }
 

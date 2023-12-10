@@ -1,7 +1,6 @@
 import {
   Body,
   Controller,
-  Delete,
   Get,
   HttpStatus,
   NotFoundException,
@@ -22,15 +21,6 @@ import { UsersService } from './users.service';
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersServices: UsersService) {}
-
-  @Roles(ROLES.ADMIN)
-  @Get()
-  async getAllUsers(@Res() res: Response) {
-    const users = await this.usersServices.findAll();
-    if (!users) throw new NotFoundException('bad request');
-
-    return res.status(HttpStatus.OK).json(users);
-  }
 
   @Roles(ROLES.USER)
   @Get(':id')
@@ -59,17 +49,6 @@ export class UsersController {
         email: user.email,
         role: user.role,
       },
-    });
-  }
-
-  @Roles(ROLES.ADMIN)
-  @Delete(':id')
-  async deleteUser(@Param('id') id: string, @Res() res: Response) {
-    const user = await this.usersServices.deleteUserById(id);
-    if (!user) throw new NotFoundException('bad delete');
-    return res.status(HttpStatus.OK).json({
-      message: 'user removed successfully',
-      userRemoved: { username: user.username, email: user.email },
     });
   }
 }

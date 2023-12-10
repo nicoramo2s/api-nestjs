@@ -1,17 +1,10 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { Transform } from 'class-transformer';
-import {
-  IsEmail,
-  IsNotEmpty,
-  IsString,
-  MaxLength,
-  MinLength,
-} from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
 
 export class CreateUserDTO {
   @IsNotEmpty()
   @IsString()
-  @MaxLength(10)
   @MinLength(3)
   readonly username: string;
 
