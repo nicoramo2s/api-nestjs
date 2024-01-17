@@ -76,7 +76,7 @@ export class PostsController {
   }
 
   @Get(':id')
-  async getUserById(
+  async getPostById(
     @Param('id') id: string,
     @Res() res: Response,
     @Req() req: PostRequest,
@@ -143,7 +143,7 @@ export class PostsController {
 
   @Roles(ROLES.ADMIN)
   @Delete(':id')
-  async deleteUser(
+  async deleteUserPost(
     @Req() req: PostRequest,
     @Param('id') id: string,
     @Res() res: Response,

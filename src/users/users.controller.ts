@@ -30,6 +30,7 @@ export class UsersController {
     return res.status(HttpStatus.OK).json({
       username: user.username,
       email: user.email,
+      role: user.role
     });
   }
 

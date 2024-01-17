@@ -33,12 +33,12 @@ export class AdminController {
   @Roles(ROLES.ADMIN)
   @Get('posts')
   async getAdminAllPosts(
-    @Query('page') page: string,
-    @Query('limit') limit: string,
+    @Query('page') page: string = '1',
+    @Query('limit') limit: string = '10',
     @Res() res: Response,
   ) {
     try {
-      const dataPosts = this.adminService.getAllPosts(page, limit);
+      const dataPosts = await this.adminService.getAllPosts(page, limit);
       return res.status(HttpStatus.OK).json(dataPosts);
     } catch (error) {
       throw error;

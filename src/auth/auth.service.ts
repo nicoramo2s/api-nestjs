@@ -31,11 +31,9 @@ export class AuthService {
       role: user.role,
     };
 
-    return {
-      access_token: this.jwtService.sign(payload, {
-        secret: process.env.JWT_SECRET_KEY,
-      }), //* el metodo sign firma con el jwt
-    };
+    return this.jwtService.sign(payload, {
+      secret: process.env.JWT_SECRET_KEY,
+    }); //* el metodo sign firma con el jwt
   }
 
   async register(createUserDto: CreateUserDTO): Promise<any> {

@@ -1,8 +1,8 @@
 import { Request } from 'express';
-export interface UserRequest extends Request {
+export class UserRequest extends Request {
   user: {
-    id: string;
-    username: string;
-    role: string;
+    id: 'string';
+    username: 'test';
+    role: 'user';
   };
 }

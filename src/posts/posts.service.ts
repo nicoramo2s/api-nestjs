@@ -40,7 +40,7 @@ export class PostsService {
     const pageInt = parseInt(page);
     const limitInt = parseInt(limit);
     const skip = (pageInt - 1) * limitInt;
-    const posts = await this.postModel.find().skip(skip).limit(limitInt).exec();
+    const posts = await this.postModel.find().skip(skip).limit(limitInt).lean();
     if (!posts) throw new NotFoundException('No posts here');
     return posts;
   }
@@ -116,7 +116,7 @@ export class PostsService {
       })
       .skip((parseInt(page) - 1) * parseInt(limit))
       .limit(parseInt(limit))
-      .exec();
+      .lean();
     if (!results) {
       throw new NotFoundException('Posts not founded');
     }
@@ -125,7 +125,7 @@ export class PostsService {
 
   async getFilterPosts(filterDto: FilterPostsDto, id: string) {
     const { author, category } = filterDto;
-    const postUser: Post = await this.postModel.findById(id);
+    const postUser: Post = await this.postModel.findById(id).lean();
 
     if (!(postUser.userId.toString() === id)) throw new UnauthorizedException();
 

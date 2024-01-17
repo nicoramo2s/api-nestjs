@@ -17,5 +17,5 @@ export class CreatePostDTO {
 
   @IsNotEmpty()
   @IsString()
-  category: string;
+  category: string[];
 }
