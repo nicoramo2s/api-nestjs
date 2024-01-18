@@ -13,7 +13,7 @@ export const UserMock = {
 
 export const mockRequest = {
   user: { id: '123id' },
-} as unknown as UserRequest
+} as unknown as UserRequest;
 
 export const UserMockRequest = {
   id: '126421674hdjsab',
@@ -26,8 +26,8 @@ export const UserMockRequest = {
 export const UserMockUpdated = {
   username: 'test',
   email: 'test@test.com',
-  password: 'passwordtest'
-}
+  password: 'passwordtest',
+};
 
 export const UserMockData = [
   {

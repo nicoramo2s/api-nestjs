@@ -1,0 +1,874 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>final-project-bootcmap documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">final-project-bootcmap documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#AuthMock" title="src/test/src/auth/__mocks__/auth.mock.ts" ><b>AuthMock</b>&nbsp;&nbsp;&nbsp;(src/.../auth.mock.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#messageSuccessfully" title="src/test/src/posts/__mocks__/posts.mock.ts" ><b>messageSuccessfully</b>&nbsp;&nbsp;&nbsp;(src/.../posts.mock.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#mockData" title="src/test/src/posts/__mocks__/posts.mock.ts" ><b>mockData</b>&nbsp;&nbsp;&nbsp;(src/.../posts.mock.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#mockDataAdmin" title="src/test/src/admin/__mocks__/admin.mock.ts" ><b>mockDataAdmin</b>&nbsp;&nbsp;&nbsp;(src/.../admin.mock.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#mockPost" title="src/test/src/posts/__mocks__/posts.mock.ts" ><b>mockPost</b>&nbsp;&nbsp;&nbsp;(src/.../posts.mock.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#mockQuery" title="src/test/src/posts/__mocks__/posts.mock.ts" ><b>mockQuery</b>&nbsp;&nbsp;&nbsp;(src/.../posts.mock.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#mockRequest" title="src/test/src/posts/__mocks__/posts.mock.ts" ><b>mockRequest</b>&nbsp;&nbsp;&nbsp;(src/.../posts.mock.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#mockRequest" title="src/test/src/users/__mocks__/user.mock.ts" ><b>mockRequest</b>&nbsp;&nbsp;&nbsp;(src/.../user.mock.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#mockToken" title="src/test/src/auth/__mocks__/auth.mock.ts" ><b>mockToken</b>&nbsp;&nbsp;&nbsp;(src/.../auth.mock.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#PostSchema" title="src/posts/schema/post.schema.ts" ><b>PostSchema</b>&nbsp;&nbsp;&nbsp;(src/.../post.schema.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#req" title="src/test/src/auth/__mocks__/auth.mock.ts" ><b>req</b>&nbsp;&nbsp;&nbsp;(src/.../auth.mock.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ROLE_KEY" title="src/auth/decorators/roles.decorator.ts" ><b>ROLE_KEY</b>&nbsp;&nbsp;&nbsp;(src/.../roles.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Roles" title="src/auth/decorators/roles.decorator.ts" ><b>Roles</b>&nbsp;&nbsp;&nbsp;(src/.../roles.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UserMock" title="src/test/src/users/__mocks__/user.mock.ts" ><b>UserMock</b>&nbsp;&nbsp;&nbsp;(src/.../user.mock.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UserMockData" title="src/test/src/users/__mocks__/user.mock.ts" ><b>UserMockData</b>&nbsp;&nbsp;&nbsp;(src/.../user.mock.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UserMockRequest" title="src/test/src/users/__mocks__/user.mock.ts" ><b>UserMockRequest</b>&nbsp;&nbsp;&nbsp;(src/.../user.mock.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UserMockUpdated" title="src/test/src/users/__mocks__/user.mock.ts" ><b>UserMockUpdated</b>&nbsp;&nbsp;&nbsp;(src/.../user.mock.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UserSchema" title="src/users/schemas/user.schema.ts" ><b>UserSchema</b>&nbsp;&nbsp;&nbsp;(src/.../user.schema.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/test/src/auth/__mocks__/auth.mock.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="AuthMock"></a>
+                    <span class="name">
+                        <span ><b>AuthMock</b></span>
+                        <a href="#AuthMock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  username: &#x27;test&#x27;,
+  email: &#x27;test@test.com.ar&#x27;,
+  password: &#x27;1234test&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mockToken"></a>
+                    <span class="name">
+                        <span ><b>mockToken</b></span>
+                        <a href="#mockToken"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="req"></a>
+                    <span class="name">
+                        <span ><b>req</b></span>
+                        <a href="#req"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/UserRequest.html" target="_self" >UserRequest</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  user: {
+    id: &#x27;string&#x27;,
+    username: &#x27;test&#x27;,
+    role: &#x27;user&#x27;
+  },
+  cache: &#x27;default&#x27;,
+  credentials: &#x27;include&#x27;,
+  destination: &#x27;&#x27;,
+  headers: undefined,
+  integrity: &#x27;&#x27;,
+  keepalive: false,
+  method: &#x27;&#x27;,
+  mode: &#x27;same-origin&#x27;,
+  redirect: &#x27;error&#x27;,
+  referrer: &#x27;&#x27;,
+  referrerPolicy: &#x27;&#x27;,
+  signal: undefined,
+  url: &#x27;&#x27;,
+  clone: function (): globalThis.Request {
+    throw new Error(&#x27;Function not implemented.&#x27;);
+  },
+  body: undefined,
+  bodyUsed: false,
+  arrayBuffer: function (): Promise&lt;ArrayBuffer&gt; {
+    throw new Error(&#x27;Function not implemented.&#x27;);
+  },
+  blob: function (): Promise&lt;Blob&gt; {
+    throw new Error(&#x27;Function not implemented.&#x27;);
+  },
+  formData: function (): Promise&lt;FormData&gt; {
+    throw new Error(&#x27;Function not implemented.&#x27;);
+  },
+  json: function (): Promise&lt;any&gt; {
+    throw new Error(&#x27;Function not implemented.&#x27;);
+  },
+  text: function (): Promise&lt;string&gt; {
+    throw new Error(&#x27;Function not implemented.&#x27;);
+  }
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/test/src/posts/__mocks__/posts.mock.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="messageSuccessfully"></a>
+                    <span class="name">
+                        <span ><b>messageSuccessfully</b></span>
+                        <a href="#messageSuccessfully"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  message: &#x27;Post updated successfully&#x27;,
+  id: new Types.ObjectId(),
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mockData"></a>
+                    <span class="name">
+                        <span ><b>mockData</b></span>
+                        <a href="#mockData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  {
+    _id: new Types.ObjectId(&#x27;655e078a81276db475f5e324&#x27;),
+    title: &#x27;test&#x27;,
+    author: &#x27;test&#x27;,
+    content: &#x27;test&#x27;,
+    category: [&#x27;test&#x27;],
+    userId: {
+      _id: &#x27;655e078a81276db475f5e324&#x27;,
+      username: &#x27;test&#x27;,
+      email: &#x27;test@test.com&#x27;,
+      password: &#x27;testpassword&#x27;,
+      role: ROLES.ADMIN,
+    },
+    __v: 0,
+  },
+  {
+    _id: new Types.ObjectId(&#x27;655e078a81276db475f5e324&#x27;),
+    title: &#x27;test&#x27;,
+    author: &#x27;test2&#x27;,
+    content: &#x27;test2&#x27;,
+    category: [&#x27;test2&#x27;],
+    userId: {
+      _id: &#x27;655e078a81276db475f5e324&#x27;,
+      username: &#x27;test2&#x27;,
+      email: &#x27;test2@test2.com&#x27;,
+      password: &#x27;testpassword&#x27;,
+      role: ROLES.USER,
+    },
+    __v: 0,
+  },
+  {
+    _id: new Types.ObjectId(&#x27;655e078a81276db475f5e324&#x27;),
+    title: &#x27;test&#x27;,
+    author: &#x27;test3&#x27;,
+    content: &#x27;test3&#x27;,
+    category: [&#x27;test3&#x27;],
+    userId: {
+      _id: &#x27;655e078a81276db475f5e324&#x27;,
+      username: &#x27;test3&#x27;,
+      email: &#x27;test3@test3.com&#x27;,
+      password: &#x27;testpassword&#x27;,
+      role: ROLES.USER,
+    },
+    __v: 0,
+  },
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mockPost"></a>
+                    <span class="name">
+                        <span ><b>mockPost</b></span>
+                        <a href="#mockPost"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  _id: new Types.ObjectId(),
+  title: &#x27;test&#x27;,
+  author: &#x27;test&#x27;,
+  content: &#x27;test&#x27;,
+  category: [&#x27;test&#x27;],
+  userId: {
+    _id: &#x27;655e078a81276db475f5e558&#x27;,
+    username: &#x27;TEST&#x27;,
+    email: &#x27;TEST@TEST.COM&#x27;,
+    password: &#x27;TESTPASSWORD&#x27;,
+    role: ROLES.USER,
+  },
+  __v: 0,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mockQuery"></a>
+                    <span class="name">
+                        <span ><b>mockQuery</b></span>
+                        <a href="#mockQuery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/SearchPostsDto.html" target="_self" >SearchPostsDto</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  title: &#x27;test&#x27;,
+  page: &#x27;1&#x27;,
+  limit: &#x27;10&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mockRequest"></a>
+                    <span class="name">
+                        <span ><b>mockRequest</b></span>
+                        <a href="#mockRequest"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  user: { id: &#x27;123id&#x27; },
+} as unknown as PostRequest</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/test/src/admin/__mocks__/admin.mock.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mockDataAdmin"></a>
+                    <span class="name">
+                        <span ><b>mockDataAdmin</b></span>
+                        <a href="#mockDataAdmin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  {
+    _id: new mongoose.Types.ObjectId(),
+    author: &#x27;test&#x27;,
+    category: [&#x27;test&#x27;],
+    content: &#x27;test&#x27;,
+    title: &#x27;test&#x27;,
+    userId: {
+      _id: new mongoose.Types.ObjectId(),
+      email: &#x27;test@test.com&#x27;,
+      password: &#x27;passwordtest&#x27;,
+      role: ROLES.USER,
+      username: &#x27;test&#x27;,
+    },
+  },
+  {
+    _id: new mongoose.Types.ObjectId(),
+    author: &#x27;test2&#x27;,
+    category: [&#x27;test2&#x27;],
+    content: &#x27;test2&#x27;,
+    title: &#x27;test2&#x27;,
+    userId: {
+      _id: new mongoose.Types.ObjectId(),
+      email: &#x27;test@test.com&#x27;,
+      password: &#x27;passwordtest&#x27;,
+      role: ROLES.USER,
+      username: &#x27;test&#x27;,
+    },
+  },
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/test/src/users/__mocks__/user.mock.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mockRequest"></a>
+                    <span class="name">
+                        <span ><b>mockRequest</b></span>
+                        <a href="#mockRequest"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  user: { id: &#x27;123id&#x27; },
+} as unknown as UserRequest</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UserMock"></a>
+                    <span class="name">
+                        <span ><b>UserMock</b></span>
+                        <a href="#UserMock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  _id: new mongoose.Types.ObjectId(),
+  username: &#x27;test&#x27;,
+  email: &#x27;test@test.com&#x27;,
+  password: &#x27;passwordtest&#x27;,
+  role: ROLES.USER,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UserMockData"></a>
+                    <span class="name">
+                        <span ><b>UserMockData</b></span>
+                        <a href="#UserMockData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  {
+    username: &#x27;test&#x27;,
+    email: &#x27;test@test.com&#x27;,
+    password: &#x27;passwordtest&#x27;,
+    role: ROLES.USER,
+  },
+  {
+    username: &#x27;admin&#x27;,
+    email: &#x27;admin@admin.com&#x27;,
+    password: &#x27;passwordadmin&#x27;,
+    role: ROLES.ADMIN,
+  },
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UserMockRequest"></a>
+                    <span class="name">
+                        <span ><b>UserMockRequest</b></span>
+                        <a href="#UserMockRequest"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  id: &#x27;126421674hdjsab&#x27;,
+  username: &#x27;test&#x27;,
+  email: &#x27;test@test.com&#x27;,
+  password: &#x27;passwordtest&#x27;,
+  role: ROLES.USER,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UserMockUpdated"></a>
+                    <span class="name">
+                        <span ><b>UserMockUpdated</b></span>
+                        <a href="#UserMockUpdated"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  username: &#x27;test&#x27;,
+  email: &#x27;test@test.com&#x27;,
+  password: &#x27;passwordtest&#x27;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/posts/schema/post.schema.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="PostSchema"></a>
+                    <span class="name">
+                        <span ><b>PostSchema</b></span>
+                        <a href="#PostSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(Post)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/auth/decorators/roles.decorator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROLE_KEY"></a>
+                    <span class="name">
+                        <span ><b>ROLE_KEY</b></span>
+                        <a href="#ROLE_KEY"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;role&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Roles"></a>
+                    <span class="name">
+                        <span ><b>Roles</b></span>
+                        <a href="#Roles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(...role: ROLES[]) &#x3D;&gt; SetMetadata(ROLE_KEY, role)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/users/schemas/user.schema.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UserSchema"></a>
+                    <span class="name">
+                        <span ><b>UserSchema</b></span>
+                        <a href="#UserSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>SchemaFactory.createForClass(User)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

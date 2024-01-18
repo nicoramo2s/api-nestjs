@@ -33,11 +33,10 @@ describe('AuthController', () => {
 
   describe('Login', () => {
     it('should return a token JWT', async () => {
-      jest
-        .spyOn(authService, 'login')
-        .mockReturnValue(mockToken);
-      const result = await authController.login(req);
-      expect(result).toBe(mockToken);
+      jest.spyOn(authService, 'login').mockResolvedValue(mockToken);
+      await authController.login(req, mockResponse);
+      expect(mockResponse.status).toHaveBeenCalledWith(200);
+      expect(mockResponse.json).toHaveBeenCalledWith(mockToken);
     });
   });
 
@@ -56,9 +55,14 @@ describe('AuthController', () => {
     it('should throw NotFoundException when user registration fails', async () => {
       jest.spyOn(authService, 'register').mockResolvedValue(null);
 
-      const res = { status: jest.fn().mockReturnThis(), json: jest.fn() } as any;
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      } as any;
 
-      await expect(() => authController.register(null, res)).rejects.toThrowError(NotFoundException);
+      await expect(() =>
+        authController.register(null, res),
+      ).rejects.toThrowError(NotFoundException);
     });
   });
 });

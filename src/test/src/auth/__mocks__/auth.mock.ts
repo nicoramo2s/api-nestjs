@@ -15,7 +15,7 @@ export const req: UserRequest = {
   user: {
     id: 'string',
     username: 'test',
-    role: 'user'
+    role: 'user',
   },
   cache: 'default',
   credentials: 'include',
@@ -49,5 +49,5 @@ export const req: UserRequest = {
   },
   text: function (): Promise<string> {
     throw new Error('Function not implemented.');
-  }
-}
+  },
+};

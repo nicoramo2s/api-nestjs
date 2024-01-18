@@ -8,6 +8,7 @@ import * as bcrypt from 'bcrypt';
 import { UserPayload } from 'src/common/interfaces/passport.interface';
 import { CreateUserDTO } from 'src/users/dto/user.dto';
 import { UsersService } from 'src/users/users.service';
+import { Register } from './dto/auth.dto';
 
 @Injectable()
 export class AuthService {
@@ -24,7 +25,7 @@ export class AuthService {
     return userFounded;
   }
 
-  login(user: UserPayload) {
+  async login(user: UserPayload) {
     const payload = {
       id: user.id,
       username: user.username,
@@ -36,14 +37,14 @@ export class AuthService {
     }); //* el metodo sign firma con el jwt
   }
 
-  async register(createUserDto: CreateUserDTO): Promise<any> {
-    const user = await this.userService.findByEmail(createUserDto.email);
+  async register(register: Register): Promise<any> {
+    const user = await this.userService.findByEmail(register.email);
     if (user) throw new BadRequestException('the user exist');
 
-    const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
+    const hashedPassword = await bcrypt.hash(register.password, 10);
     const createUser = {
-      username: createUserDto.username,
-      email: createUserDto.email,
+      username: register.username,
+      email: register.email,
       password: hashedPassword,
     };
     await this.userService.createUser(createUser);

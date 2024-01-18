@@ -23,7 +23,15 @@ import { FilterPostsDto } from './dto/filter-post.dto';
 import { SearchPostsDto } from './dto/search-post.dto';
 import { UpdatePostDTO } from './dto/update-post.dto';
 import { PostsService } from './posts.service';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
+@ApiBearerAuth()
+@ApiTags('posts')
 @Roles(ROLES.USER)
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('posts')
@@ -31,6 +39,13 @@ export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
   @Get()
+  @ApiOperation({
+    summary: 'List all posts',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Return a posts list',
+  })
   async getAllPosts(
     @Query('page') page: string = '1',
     @Query('limit') limit: string = '10',
@@ -45,6 +60,11 @@ export class PostsController {
   }
 
   @Get('/filter')
+  @ApiOperation({ summary: 'Filter posts by category and author' })
+  @ApiResponse({
+    status: 200,
+    description: 'Filter posts by author and category',
+  })
   async filterPost(
     @Query() query: FilterPostsDto,
     @Res() res: Response,
@@ -59,6 +79,13 @@ export class PostsController {
   }
 
   @Get('/search')
+  @ApiOperation({
+    summary: 'Search for posts by title, content, author',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Returns the posts that match the search parameters',
+  })
   async searchPost(
     @Query() { title, page = '1', limit = '10' }: SearchPostsDto,
     @Res() res: Response,
@@ -76,6 +103,11 @@ export class PostsController {
   }
 
   @Get(':id')
+  @ApiOperation({ summary: 'View details of a specific post' })
+  @ApiResponse({
+    status: 200,
+    description: 'Returns a post by id',
+  })
   async getPostById(
     @Param('id') id: string,
     @Res() res: Response,
@@ -90,6 +122,11 @@ export class PostsController {
   }
 
   @Get('/user/:userId')
+  @ApiOperation({ summary: 'you get the posts from a specific user' })
+  @ApiResponse({
+    status: 200,
+    description: 'Returns a post by userId',
+  })
   async getPostByUser(@Param('userId') userId: string, @Res() res: Response) {
     try {
       const data = await this.postsService.getPostByUserId(userId);
@@ -100,6 +137,11 @@ export class PostsController {
   }
 
   @Post()
+  @ApiOperation({ summary: 'Create a new post' })
+  @ApiResponse({
+    status: 201,
+    description: 'Return new post',
+  })
   async createPost(
     @Req() req: PostRequest,
     @Body() body: CreatePostDTO,
@@ -118,8 +160,14 @@ export class PostsController {
       throw error;
     }
   }
+
   @Roles(ROLES.ADMIN)
   @Put(':id')
+  @ApiOperation({ summary: 'Update a post' })
+  @ApiResponse({
+    status: 200,
+    description: 'Updated post with id',
+  })
   async updatePost(
     @Param('id') id: string,
     @Req() req: PostRequest,
@@ -143,6 +191,11 @@ export class PostsController {
 
   @Roles(ROLES.ADMIN)
   @Delete(':id')
+  @ApiOperation({ summary: 'Delete a post' })
+  @ApiResponse({
+    status: 200,
+    description: 'Delete post with id',
+  })
   async deleteUserPost(
     @Req() req: PostRequest,
     @Param('id') id: string,
