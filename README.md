@@ -39,11 +39,12 @@ $ npm install
 
 ## Configuration
 
-Inicia creando un archivo .env con este formato:
-
+Start by creating an .env file with this format:
+```bash
 DATABASES_URL='url the database MongoDB'
 PORT=3000
 JWT_SECRET_KEY='secret key jwt'
+```
 
 ## Running the app
 
