@@ -13,6 +13,7 @@ import { AuthService } from './auth.service';
 import { Login, Register } from './dto/auth.dto';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { Response } from 'express';
+import { UserRequest } from 'src/common/interfaces/userRequest.interfaces';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -27,7 +28,7 @@ export class AuthController {
     status: 200,
     description: 'Return a token jwt',
   })
-  async login(@Req() req, @Res() res: Response) {
+  async login(@Req() req: UserRequest, @Res() res: Response) {
     const token = await this.authService.login(req.user);
     return res.status(HttpStatus.OK).json(token);
   }
