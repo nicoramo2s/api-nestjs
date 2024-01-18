@@ -8,26 +8,26 @@ import {
   Res,
   UseGuards,
 } from '@nestjs/common';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { Response } from 'express';
-import { UserRequest } from 'src/common/interfaces/userRequest.interfaces';
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
-import { Register } from './dto/auth.dto';
+import { Login, Register } from './dto/auth.dto';
 import { LocalAuthGuard } from './guards/local-auth.guard';
+import { Response } from 'express';
 
 @ApiTags('auth')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post('login')
   @UseGuards(LocalAuthGuard)
+  @Post('login')
   @ApiOperation({ summary: 'Assign token to a user' })
+  @ApiBody({ type: Login })
   @ApiResponse({
     status: 200,
     description: 'Return a token jwt',
   })
-  async login(@Req() req: UserRequest, @Res() res: Response) {
+  async login(@Req() req, @Res() res: Response) {
     const token = await this.authService.login(req.user);
     return res.status(HttpStatus.OK).json(token);
   }
