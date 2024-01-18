@@ -223,7 +223,7 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../classes/Login.html#source" target="_self" >Login:25</a></code>
+                                <div class="io-line">Defined in         <code><a href="../classes/Login.html#source" target="_self" >Login:24</a></code>
 </div>
                         </td>
                     </tr>
@@ -267,7 +267,7 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../classes/Login.html#source" target="_self" >Login:29</a></code>
+                                <div class="io-line">Defined in         <code><a href="../classes/Login.html#source" target="_self" >Login:28</a></code>
 </div>
                         </td>
                     </tr>
@@ -306,7 +306,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/auth/dto/auth.dto.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/auth/dto/auth.dto.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -326,19 +326,18 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
-import { IsEmail, IsNotEmpty, IsOptional, IsString } from &#x27;class-validator&#x27;;
-import { ROLES } from &#x27;src/common/enums/role.enum&#x27;;
+import { IsEmail, IsNotEmpty, IsString } from &#x27;class-validator&#x27;;
 
 export class Login {
   @IsString()
   @IsNotEmpty()
   @IsEmail()
-  @ApiProperty({ example: &#x27;test@test.com&#x27;, description: &#x27;email&#x27; })
+  @ApiProperty({ example: &#x27;test3@test.com&#x27;, description: &#x27;email&#x27; })
   email: string;
 
   @IsString()
   @IsNotEmpty()
-  @ApiProperty({ example: &#x27;Example1234.&#x27;, description: &#x27;password&#x27; })
+  @ApiProperty({ example: &#x27;12345678&#x27;, description: &#x27;password&#x27; })
   password: string;
 }
 

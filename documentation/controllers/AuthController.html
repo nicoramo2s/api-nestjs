@@ -152,6 +152,7 @@
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Async</span>
                                 <a href="#login" >login</a>
                             </li>
@@ -189,6 +190,7 @@
                             <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                             <span class="modifier">Async</span>
                         <span ><b>login</b></span>
                         <a href="#login"><span class="icon ion-ios-link"></span></a>
@@ -198,7 +200,7 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>login(req: <a href="../classes/UserRequest.html" target="_self">UserRequest</a>, res: Response)</code>
+                    <code>login(req, res: Response)</code>
                 </td>
             </tr>
 
@@ -206,7 +208,7 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;login&#x27;)<br />@UseGuards(LocalAuthGuard)<br />@ApiOperation({summary: &#x27;Assign token to a user&#x27;})<br />@ApiResponse({status: 200, description: &#x27;Return a token jwt&#x27;})<br /></code>
+                    <code>@UseGuards(LocalAuthGuard)<br />@Post(&#x27;login&#x27;)<br />@ApiOperation({summary: &#x27;Assign token to a user&#x27;})<br />@ApiBody({type: Login})<br />@ApiResponse({status: 200, description: &#x27;Return a token jwt&#x27;})<br /></code>
                 </td>
             </tr>
 
@@ -236,7 +238,6 @@
                                         <tr>
                                                 <td>req</td>
                                             <td>
-                                                            <code><a href="../classes/UserRequest.html" target="_self" >UserRequest</a></code>
                                             </td>
 
                                             <td>
@@ -376,26 +377,26 @@
   Res,
   UseGuards,
 } from &#x27;@nestjs/common&#x27;;
-import { ApiOperation, ApiResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
-import { Response } from &#x27;express&#x27;;
-import { UserRequest } from &#x27;src/common/interfaces/userRequest.interfaces&#x27;;
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
 import { AuthService } from &#x27;./auth.service&#x27;;
-import { Register } from &#x27;./dto/auth.dto&#x27;;
+import { Login, Register } from &#x27;./dto/auth.dto&#x27;;
 import { LocalAuthGuard } from &#x27;./guards/local-auth.guard&#x27;;
+import { Response } from &#x27;express&#x27;;
 
 @ApiTags(&#x27;auth&#x27;)
 @Controller(&#x27;auth&#x27;)
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post(&#x27;login&#x27;)
   @UseGuards(LocalAuthGuard)
+  @Post(&#x27;login&#x27;)
   @ApiOperation({ summary: &#x27;Assign token to a user&#x27; })
+  @ApiBody({ type: Login })
   @ApiResponse({
     status: 200,
     description: &#x27;Return a token jwt&#x27;,
   })
-  async login(@Req() req: UserRequest, @Res() res: Response) {
+  async login(@Req() req, @Res() res: Response) {
     const token &#x3D; await this.authService.login(req.user);
     return res.status(HttpStatus.OK).json(token);
   }

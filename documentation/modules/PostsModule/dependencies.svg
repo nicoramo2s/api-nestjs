@@ -26,57 +26,57 @@
 </g>
 <g id="clust4" class="cluster">
 <title>cluster_PostsModule_exports</title>
-<polygon fill="none" stroke="black" points="201,-208 201,-260 309,-260 309,-208 201,-208"/>
-</g>
-<g id="clust3" class="cluster">
-<title>cluster_PostsModule_imports</title>
-<polygon fill="none" stroke="black" points="266,-78 266,-130 374,-130 374,-78 266,-78"/>
+<polygon fill="none" stroke="black" points="187,-208 187,-260 295,-260 295,-208 187,-208"/>
 </g>
 <g id="clust6" class="cluster">
 <title>cluster_PostsModule_providers</title>
-<polygon fill="none" stroke="black" points="122,-78 122,-130 258,-130 258,-78 122,-78"/>
+<polygon fill="none" stroke="black" points="238,-78 238,-130 374,-130 374,-78 238,-78"/>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_PostsModule_imports</title>
+<polygon fill="none" stroke="black" points="122,-78 122,-130 230,-130 230,-78 122,-78"/>
 </g>
 <!-- UsersModule -->
 <g id="node1" class="node">
 <title>UsersModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="365.92,-122 362.92,-126 341.92,-126 338.92,-122 274.08,-122 274.08,-86 365.92,-86 365.92,-122"/>
-<text text-anchor="middle" x="320" y="-99.8" font-family="Times,serif" font-size="14.00">UsersModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="221.92,-122 218.92,-126 197.92,-126 194.92,-122 130.08,-122 130.08,-86 221.92,-86 221.92,-122"/>
+<text text-anchor="middle" x="176" y="-99.8" font-family="Times,serif" font-size="14.00">UsersModule</text>
 </g>
 <!-- PostsModule -->
 <g id="node2" class="node">
 <title>PostsModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="299.61,-187 296.61,-191 275.61,-191 272.61,-187 210.39,-187 210.39,-151 299.61,-151 299.61,-187"/>
-<text text-anchor="middle" x="255" y="-164.8" font-family="Times,serif" font-size="14.00">PostsModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="285.61,-187 282.61,-191 261.61,-191 258.61,-187 196.39,-187 196.39,-151 285.61,-151 285.61,-187"/>
+<text text-anchor="middle" x="241" y="-164.8" font-family="Times,serif" font-size="14.00">PostsModule</text>
 </g>
 <!-- UsersModule&#45;&gt;PostsModule -->
 <g id="edge1" class="edge">
 <title>UsersModule&#45;&gt;PostsModule</title>
-<path fill="none" stroke="black" d="M286.92,-122.11C286.92,-122.11 286.92,-140.99 286.92,-140.99"/>
-<polygon fill="black" stroke="black" points="283.42,-140.99 286.92,-150.99 290.42,-140.99 283.42,-140.99"/>
+<path fill="none" stroke="black" d="M209.08,-122.11C209.08,-122.11 209.08,-140.99 209.08,-140.99"/>
+<polygon fill="black" stroke="black" points="205.58,-140.99 209.08,-150.99 212.58,-140.99 205.58,-140.99"/>
 </g>
 <!-- PostsService  -->
 <g id="node3" class="node">
 <title>PostsService </title>
-<polygon fill="#fb8072" stroke="black" points="300.54,-252 209.46,-252 209.46,-216 300.54,-216 300.54,-252"/>
-<text text-anchor="middle" x="255" y="-229.8" font-family="Times,serif" font-size="14.00">PostsService </text>
+<polygon fill="#fb8072" stroke="black" points="286.54,-252 195.46,-252 195.46,-216 286.54,-216 286.54,-252"/>
+<text text-anchor="middle" x="241" y="-229.8" font-family="Times,serif" font-size="14.00">PostsService </text>
 </g>
 <!-- PostsModule&#45;&gt;PostsService  -->
 <g id="edge2" class="edge">
 <title>PostsModule&#45;&gt;PostsService </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M255,-187.11C255,-187.11 255,-205.99 255,-205.99"/>
-<polygon fill="black" stroke="black" points="251.5,-205.99 255,-215.99 258.5,-205.99 251.5,-205.99"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M241,-187.11C241,-187.11 241,-205.99 241,-205.99"/>
+<polygon fill="black" stroke="black" points="237.5,-205.99 241,-215.99 244.5,-205.99 237.5,-205.99"/>
 </g>
 <!-- PostsService -->
 <g id="node4" class="node">
 <title>PostsService</title>
-<ellipse fill="#fdb462" stroke="black" cx="190" cy="-104" rx="60.27" ry="18"/>
-<text text-anchor="middle" x="190" y="-99.8" font-family="Times,serif" font-size="14.00">PostsService</text>
+<ellipse fill="#fdb462" stroke="black" cx="306" cy="-104" rx="60.27" ry="18"/>
+<text text-anchor="middle" x="306" y="-99.8" font-family="Times,serif" font-size="14.00">PostsService</text>
 </g>
 <!-- PostsService&#45;&gt;PostsModule -->
 <g id="edge3" class="edge">
 <title>PostsService&#45;&gt;PostsModule</title>
-<path fill="none" stroke="black" d="M230.41,-117.47C230.41,-117.47 230.41,-140.86 230.41,-140.86"/>
-<polygon fill="black" stroke="black" points="226.91,-140.86 230.41,-150.86 233.91,-140.86 226.91,-140.86"/>
+<path fill="none" stroke="black" d="M265.59,-117.47C265.59,-117.47 265.59,-140.86 265.59,-140.86"/>
+<polygon fill="black" stroke="black" points="262.09,-140.86 265.59,-150.86 269.09,-140.86 262.09,-140.86"/>
 </g>
 </g>
 </svg>

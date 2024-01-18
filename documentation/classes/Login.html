@@ -204,13 +204,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsString()<br />@IsNotEmpty()<br />@IsEmail()<br />@ApiProperty({example: &#x27;test@test.com&#x27;, description: &#x27;email&#x27;})<br />
+                            @IsString()<br />@IsNotEmpty()<br />@IsEmail()<br />@ApiProperty({example: &#x27;test3@test.com&#x27;, description: &#x27;email&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/auth/dto/auth.dto.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/auth/dto/auth.dto.ts:9</a></div>
                         </td>
                     </tr>
 
@@ -242,13 +242,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsString()<br />@IsNotEmpty()<br />@ApiProperty({example: &#x27;Example1234.&#x27;, description: &#x27;password&#x27;})<br />
+                            @IsString()<br />@IsNotEmpty()<br />@ApiProperty({example: &#x27;12345678&#x27;, description: &#x27;password&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/auth/dto/auth.dto.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/auth/dto/auth.dto.ts:14</a></div>
                         </td>
                     </tr>
 
@@ -268,19 +268,18 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
-import { IsEmail, IsNotEmpty, IsOptional, IsString } from &#x27;class-validator&#x27;;
-import { ROLES } from &#x27;src/common/enums/role.enum&#x27;;
+import { IsEmail, IsNotEmpty, IsString } from &#x27;class-validator&#x27;;
 
 export class Login {
   @IsString()
   @IsNotEmpty()
   @IsEmail()
-  @ApiProperty({ example: &#x27;test@test.com&#x27;, description: &#x27;email&#x27; })
+  @ApiProperty({ example: &#x27;test3@test.com&#x27;, description: &#x27;email&#x27; })
   email: string;
 
   @IsString()
   @IsNotEmpty()
-  @ApiProperty({ example: &#x27;Example1234.&#x27;, description: &#x27;password&#x27; })
+  @ApiProperty({ example: &#x27;12345678&#x27;, description: &#x27;password&#x27; })
   password: string;
 }
 

@@ -162,18 +162,18 @@ export class CreateUserDTO {
   @IsNotEmpty()
   @IsString()
   @MinLength(3)
-  @ApiProperty({example: &#x27;nicolas&#x27;, description: &#x27;username&#x27;})
+  @ApiProperty({ example: &#x27;nicolas&#x27;, description: &#x27;username&#x27; })
   readonly username: string;
 
   @IsNotEmpty()
   @IsEmail()
-  @ApiProperty({example: &#x27;nicolas@nicolas.com&#x27;, description: &#x27;email&#x27;})
+  @ApiProperty({ example: &#x27;nicolas@nicolas.com&#x27;, description: &#x27;email&#x27; })
   readonly email: string;
 
   @Transform(({ value }) &#x3D;&gt; value.trim())
   @IsNotEmpty()
   @MinLength(8)
-  @ApiProperty({example: &#x27;password&#x27;, description: &#x27;password&#x27;})
+  @ApiProperty({ example: &#x27;password&#x27;, description: &#x27;password&#x27; })
   readonly password: string;
 }
 
